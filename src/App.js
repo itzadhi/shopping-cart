@@ -33,22 +33,29 @@ function App() {
 
   //Adding each product operation
   const handlePlusCount = (id) => {
-    const productDetails = productData.find((item) => item.id === id);
-    productDetails['count'] = productDetails?.count + 1;
-    setProductData([...productData, productDetails]);
+    const productDetails = productData.map((obj) => {
+      if (obj.id === id) {
+        return { ...obj, count: obj.count + 1 };
+      }
+      return obj;
+    });
+    setProductData(productDetails);
   };
 
   //Removing each product operation
   const handleMinusCount = (id) => {
-    const productDetails = productData.find((item) => item.id === id);
-
-    //If selected product is going become zero
-    if (productDetails?.count === 1) {
-      //Update the total cart count
-      setCartCount(cartCount - 1);
-    }
-    productDetails['count'] = productDetails?.count - 1;
-    setProductData([...productData, productDetails]);
+    const productDetails = productData.map((obj) => {
+      if (obj.id === id) {
+        //If selected product is going become zero
+        if (obj.count === 1) {
+          //Update the total cart count
+          setCartCount(cartCount - 1);
+        }
+        return { ...obj, count: obj.count - 1 };
+      }
+      return obj;
+    });
+    setProductData(productDetails);
   };
 
   return (
