@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect } from 'react';
 import data from '../data';
 import ProductList from '../Component/ProductList';
 import CartContext from '../context/CartContext';
@@ -18,7 +18,7 @@ function HomeScreen() {
   //Initial data mount for once
   useEffect(() => {
     getData(data);
-    // eslint-disable-next-line no-use-before-define
+    // eslint-disable-next-line
   }, []);
 
   return (
