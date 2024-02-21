@@ -17,9 +17,8 @@ function HomeScreen() {
 
   //Initial data mount for once
   useEffect(() => {
-    //getting product data from data file
-    // setProductData(data);
     getData(data);
+    // eslint-disable-next-line no-use-before-define
   }, []);
 
   return (

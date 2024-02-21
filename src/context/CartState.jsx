@@ -4,8 +4,8 @@ import cartReducer from './cartReducer';
 
 const CartState = (props) => {
   const initialState = {
-    productData: [],
-    cartData: [],
+    productData: [], //Product Data
+    cartData: [], //Cart Data
   };
 
   const [state, dispatch] = useReducer(cartReducer, initialState);
