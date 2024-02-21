@@ -1,20 +1,16 @@
 import React from 'react';
 
 function ProductList({
-  id,
-  name,
-  count,
-  image,
-  price,
-  description,
+  product,
   handleAddCart,
   handleRemoveCart,
   handlePlusCount,
   handleMinusCount,
 }) {
+  const { id, title, count, price, description, thumbnail } = product;
   return (
-    <div className='col mb-5'>
-      <div className='card h-100'>
+    <div className='mb-5 d-flex '>
+      <div className='card h-60 align-content-strech'>
         <div
           className='badge bg-dark text-white position-absolute'
           style={{ top: '0.5rem', right: '0.5rem' }}
@@ -24,14 +20,14 @@ function ProductList({
 
         <img
           className='card-img-top img-fluid'
-          style={{ height: '300px', width: '250px', objectFit: 'contain' }}
-          src={image}
-          alt={name}
+          style={{ height: '20rem', width: '17rem', objectFit: 'fill' }}
+          src={thumbnail}
+          alt={title}
         />
 
         <div className='card-body'>
           <div className='text-center'>
-            <h5 className='fw-bolder'>{name}</h5>
+            <h5 className='fw-bolder'>{title}</h5>
             <div className='d-flex justify-content-center'>{description}</div>
             <span>{price}</span>
           </div>
