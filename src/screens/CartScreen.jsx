@@ -10,15 +10,17 @@ function CartScreen() {
 
   return (
     <Container className='my-5'>
-      {cartData?.length > 0 &&
-        cartData.map((item) => (
-          <Product
-            key={item.id}
-            product={item}
-            handlePlusCount={handlePlusCount}
-            handleMinusCount={handleMinusCount}
-          />
-        ))}
+      <div className='row justify-content-center'>
+        {cartData?.length > 0 &&
+          cartData.map((item) => (
+            <Product
+              key={item.id}
+              product={item}
+              handlePlusCount={handlePlusCount}
+              handleMinusCount={handleMinusCount}
+            />
+          ))}
+      </div>
     </Container>
   );
 }

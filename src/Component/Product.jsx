@@ -16,9 +16,9 @@ const Product = ({ product, handlePlusCount, handleMinusCount }) => {
   const subTotal = price * count.toFixed(2);
   const totalPrice = price * count * (1 - discountPercentage / 100).toFixed(2);
   return (
-    <Col sm={6} md={8} className='mx-auto col-12 mb-2'>
-      <Card className='p-2'>
-        <div className='d-inline-flex'>
+    <Col sm={6} md={8} className='mx-auto mb-2'>
+      <Card className='p-2 w-100'>
+        <div className='d-flex'>
           <img
             className='img-fluid img-thumbnail'
             style={{ height: '10rem', width: '7rem', objectFit: 'fill' }}
