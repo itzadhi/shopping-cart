@@ -1,12 +1,10 @@
 import React, { useContext } from 'react';
 import { Container } from 'react-bootstrap';
-import CartContext from '../context/CartContext';
 import Product from '../Component/Product';
+import { useSelector } from 'react-redux';
 
 function CartScreen() {
-  const cartContext = useContext(CartContext);
-
-  const { cartData, handlePlusCount, handleMinusCount } = cartContext;
+  const cartData = useSelector((store) => store.cart.cartData);
 
   return (
     <Container className='my-5'>
@@ -16,8 +14,8 @@ function CartScreen() {
             <Product
               key={item.id}
               product={item}
-              handlePlusCount={handlePlusCount}
-              handleMinusCount={handleMinusCount}
+              // handlePlusCount={handlePlusCount}
+              // handleMinusCount={handleMinusCount}
             />
           ))}
       </div>

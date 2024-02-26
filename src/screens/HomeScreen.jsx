@@ -1,25 +1,34 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import data from '../data';
 import ProductList from '../Component/ProductList';
-import CartContext from '../context/CartContext';
+import { useDispatch, useSelector } from 'react-redux';
+import { addCart } from '../store/slices/cartSlice';
 
 function HomeScreen() {
-  const cartContext = useContext(CartContext);
+  const [productData, setProductData] = useState([]);
+  const dispatch = useDispatch();
 
-  const {
-    productData,
-    getData,
-    handleAddCart,
-    handleRemoveCart,
-    handlePlusCount,
-    handleMinusCount,
-  } = cartContext;
+  // const {
+  //   productData,
+  //   getData,
+  //   handleAddCart,
+  //   handleRemoveCart,
+  //   handlePlusCount,
+  //   handleMinusCount,
+  // } = cartContext;
 
   //Initial data mount for once
   useEffect(() => {
-    getData(data);
+    setProductData(data);
     // eslint-disable-next-line
   }, []);
+
+  const handleAddCart = (id) => {
+    const productDetails = productData.find((item) => item.id === id);
+    productDetails['count'] = productDetails?.count + 1;
+
+    dispatch(addCart(productDetails));
+  };
 
   return (
     <div>
@@ -33,9 +42,9 @@ function HomeScreen() {
                   key={item.id}
                   product={item}
                   handleAddCart={handleAddCart}
-                  handleRemoveCart={handleRemoveCart}
-                  handlePlusCount={handlePlusCount}
-                  handleMinusCount={handleMinusCount}
+                  // handleRemoveCart={handleRemoveCart}
+                  // handlePlusCount={handlePlusCount}
+                  // handleMinusCount={handleMinusCount}
                 />
               ))}
           </div>

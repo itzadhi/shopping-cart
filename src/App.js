@@ -6,17 +6,18 @@ import Header from './Component/Header';
 import React from 'react';
 import HomeScreen from './screens/HomeScreen';
 import CartScreen from './screens/CartScreen';
-import CartState from './context/CartState';
+import { Provider } from 'react-redux';
+import store from './store/store';
 
 function App() {
   return (
-    <CartState>
+    <Provider store={store}>
       <Header />
       <Routes>
         <Route path='/' element={<HomeScreen />} />
         <Route path='/cart' element={<CartScreen />} />
       </Routes>
-    </CartState>
+    </Provider>
   );
 }
 

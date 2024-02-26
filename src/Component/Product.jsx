@@ -2,7 +2,7 @@ import React from 'react';
 import { Button, Col, Card } from 'react-bootstrap';
 
 //{price * (1 - discount / 100)}
-const Product = ({ product, handlePlusCount, handleMinusCount }) => {
+const Product = ({ product }) => {
   const {
     id,
     title,
@@ -35,14 +35,14 @@ const Product = ({ product, handlePlusCount, handleMinusCount }) => {
               <div className='d-flex align-items-center mb-3'>
                 <Button
                   className='m-1 rounded-circle'
-                  onClick={() => handlePlusCount(id)}
+                  // onClick={() => handlePlusCount(id)}
                 >
                   +
                 </Button>
                 <span className='align-self-center'>{count}</span>
                 <Button
                   className='m-1 rounded-circle'
-                  onClick={() => handleMinusCount(id)}
+                  // onClick={() => handleMinusCount(id)}
                 >
                   -
                 </Button>
