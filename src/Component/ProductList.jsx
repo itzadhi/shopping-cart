@@ -3,9 +3,9 @@ import React from 'react';
 function ProductList({
   product,
   handleAddCart,
-  // handleRemoveCart,
-  // handlePlusCount,
-  // handleMinusCount,
+  handleRemoveCart,
+  handlePlusCount,
+  handleMinusCount,
 }) {
   const { id, title, count, price, description, thumbnail } = product;
   return (
@@ -38,14 +38,14 @@ function ProductList({
             <div className='d-flex justify-content-center align-item-center mb-2'>
               <button
                 className='btn btn-outline-dark m-1'
-                // onClick={() => handlePlusCount(id)}
+                onClick={() => handlePlusCount(id)}
               >
                 +
               </button>
               <span className='align-self-center'>{count}</span>
               <button
                 className='btn btn-outline-dark m-1'
-                // onClick={() => handleMinusCount(id)}
+                onClick={() => handleMinusCount(id)}
               >
                 -
               </button>
@@ -53,21 +53,21 @@ function ProductList({
           )}
 
           <div className='text-center'>
-            {/* {count === 0 ? ( */}
-            <button
-              className='btn btn-outline-dark mt-auto'
-              onClick={() => handleAddCart(id)}
-            >
-              Add to cart
-            </button>
-            {/* ) : (
+            {count === 0 ? (
               <button
                 className='btn btn-outline-dark mt-auto'
-                // onClick={() => handleRemoveCart(id)}
+                onClick={() => handleAddCart(id)}
+              >
+                Add to cart
+              </button>
+            ) : (
+              <button
+                className='btn btn-outline-dark mt-auto'
+                onClick={() => handleRemoveCart(id)}
               >
                 Remove from cart
               </button>
-            )} */}
+            )}
           </div>
         </div>
       </div>

@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 function Header() {
-  const cartData = useSelector((store) => store.cart.cartData);
+  const cartCount = useSelector((store) => store.product.cartCount);
 
   return (
     <nav className='navbar navbar-expand-lg navbar-light bg-light'>
@@ -73,7 +73,7 @@ function Header() {
                 <i className='bi-cart-fill me-1'></i>
                 Cart
                 <span className='badge bg-dark text-white ms-1 rounded-pill'>
-                  {cartData?.length}
+                  {cartCount}
                 </span>
               </button>
             </Link>
