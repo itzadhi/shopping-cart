@@ -1,18 +1,26 @@
 import React, { useContext } from 'react';
 import { Container } from 'react-bootstrap';
-import CartContext from '../context/CartContext';
 import Product from '../Component/Product';
+import { useDispatch, useSelector } from 'react-redux';
+import { addItem, removeItem } from '../store/slices/productSlice';
 
 function CartScreen() {
-  const cartContext = useContext(CartContext);
+  const productData = useSelector((store) => store.product.productData);
+  const dispatch = useDispatch();
 
-  const { cartData, handlePlusCount, handleMinusCount } = cartContext;
+  const handlePlusCount = (id) => {
+    dispatch(addItem(id));
+  };
+
+  const handleMinusCount = (id) => {
+    dispatch(removeItem(id));
+  };
 
   return (
     <Container className='my-5'>
       <div className='row justify-content-center'>
-        {cartData?.length > 0 &&
-          cartData.map((item) => (
+        {productData?.length > 0 &&
+          productData.map((item) => (
             <Product
               key={item.id}
               product={item}

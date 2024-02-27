@@ -1,11 +1,10 @@
 import React, { useContext } from 'react';
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import CartContext from '../context/CartContext';
 
 function Header() {
-  const cartContext = useContext(CartContext);
+  const cartCount = useSelector((store) => store.product.cartCount);
 
-  const { cartData } = cartContext;
   return (
     <nav className='navbar navbar-expand-lg navbar-light bg-light'>
       <div className='container px-4 px-lg-5'>
@@ -74,7 +73,7 @@ function Header() {
                 <i className='bi-cart-fill me-1'></i>
                 Cart
                 <span className='badge bg-dark text-white ms-1 rounded-pill'>
-                  {cartData?.length}
+                  {cartCount}
                 </span>
               </button>
             </Link>

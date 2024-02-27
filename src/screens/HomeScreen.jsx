@@ -1,25 +1,48 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import data from '../data';
 import ProductList from '../Component/ProductList';
-import CartContext from '../context/CartContext';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  addCart,
+  addItem,
+  getProductData,
+  removeCart,
+  removeItem,
+} from '../store/slices/productSlice';
 
 function HomeScreen() {
-  const cartContext = useContext(CartContext);
-
-  const {
-    productData,
-    getData,
-    handleAddCart,
-    handleRemoveCart,
-    handlePlusCount,
-    handleMinusCount,
-  } = cartContext;
+  const productData = useSelector((store) => store.product.productData);
+  const dispatch = useDispatch();
 
   //Initial data mount for once
   useEffect(() => {
-    getData(data);
+    //Initial Mount to fetch all product data
+    if (productData?.length === 0) {
+      const productDatas = data.map((obj) => ({ ...obj, count: 0 }));
+      dispatch(getProductData(productDatas));
+    }
     // eslint-disable-next-line
   }, []);
+
+  //Adds the item to cart
+  const handleAddCart = (id) => {
+    dispatch(addCart(id));
+  };
+
+  //Removes the item from cart
+  const handleRemoveCart = (id) => {
+    dispatch(removeCart(id));
+  };
+
+  //Adds the individual item quantity
+  const handlePlusCount = (id) => {
+    dispatch(addItem(id));
+  };
+
+  //Reduces the individual item quantity
+  const handleMinusCount = (id) => {
+    dispatch(removeItem(id));
+  };
 
   return (
     <div>
