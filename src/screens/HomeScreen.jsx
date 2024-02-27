@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import data from '../data';
 import ProductList from '../Component/ProductList';
 import { useDispatch, useSelector } from 'react-redux';
