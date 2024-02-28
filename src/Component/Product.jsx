@@ -13,8 +13,10 @@ const Product = ({ product, handlePlusCount, handleMinusCount }) => {
     discountPercentage,
   } = product;
 
-  const subTotal = price * count.toFixed(2);
-  const totalPrice = price * count * (1 - discountPercentage / 100).toFixed(2);
+  const subTotal = Number(price * count).toFixed(2);
+  const totalPrice = Number(
+    price * count * (1 - discountPercentage / 100)
+  ).toFixed(2);
   return (
     count > 0 && (
       <Col sm={6} md={8} className='mx-auto mb-2'>
